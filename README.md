@@ -156,7 +156,7 @@ Don't clean up state with after or afterEach. One benefit of Cypress is incremen
 Use route aliases or assertions to guard Cypress from proceeding until an explicit condition is met. *docs
 Ex: cy.wait(3000) will halt the execution for 3 sec
 
-
+----------------------------------format later------------------------------------
 
 
 
