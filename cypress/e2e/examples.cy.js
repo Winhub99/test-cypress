@@ -36,29 +36,38 @@ describe('various examples',()=>{
         cy.getDataTest('grudge-list').within(()=>{
             cy.get('li').should('have.length',0)
         })
+        cy.getDataTest('grudge-heading').should('have.text','Add Some Grudges')
         cy.getDataTest('grudge-input').within(()=>{
             cy.get('input').type('First grudge')
         })
-        // cy.getDataTest('grudge-button').click()
-        // cy.getDataTest('grudge-list').within(()=>{
-        //     cy.get('li').should('have.length',1)
-        // })
+         cy.getDataTest('grudge-button').click()
+         cy.getDataTest('grudge-heading').should('have.text','Grudges')
 
-        // cy.getDataTest('grudge-input').within(()=>{
-        //     cy.get('input').type('Second grudge')
-        // })
-        // cy.getDataTest('grudge-button').click()
-        // cy.getDataTest('grudge-list').within(()=>{
-        //     cy.get('li').should('have.length',2)
-        //     cy.get('li').its(0).should('contain.text', 'First grudge')
-        // })
-        // cy.getDataTest('grudge-list').within(()=>{
-        //     cy.get('li').its(0).within(()=>{
-        //         cy.get('button').click()
-        //     })
-        // })
-        // cy.getDataTest('grudge-list').within(()=>{
-        //     cy.get('li').should('have.length',1)
-        // })
+        cy.getDataTest('grudge-list').within(()=>{
+            cy.get('li').should('have.length',1).should('exist')
+        })
+        cy.getDataTest('grudge-input').within(()=>{
+            cy.get('input').type('Second grudge')
+        })
+         cy.getDataTest('grudge-button').click()
+        cy.getDataTest('grudge-list').within(()=>{
+            cy.get('li').should('have.length',2).should('exist')
+            cy.get('li').its(0).should('contain.text', 'First grudge').should('exist')
+        })
+        cy.getDataTest('grudge-list').within(()=>{
+            cy.get('li').should('exist').its(0).within(()=>{
+                cy.get('button').click()
+            })
+        })
+        cy.getDataTest('grudge-list').within(()=>{
+            cy.get('li').should('have.length',1).should('exist')
+        })
+        cy.getDataTest('clear-button').click()
+        cy.getDataTest('grudge-list').within(()=>{
+            cy.get('li').should('have.length',0)
+        })
+    
     })
+        
+
 })
